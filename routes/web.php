@@ -26,4 +26,15 @@ Route::get('/', function () {
 //     return view('tasks.index');
 // });
 
-Route::resource('task','App\Http\Controllers\TaskController');
+Route::resource('task','App\Http\Controllers\TaskController')->middleware('auth','CheckRole');
+
+Auth::routes();
+
+// Redirecting register to 404 not found page
+Route::match(['get', 'post'], 'register', function(){
+    return abort(404);
+});
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('user','App\Http\Controllers\UserController')->middleware('auth');
