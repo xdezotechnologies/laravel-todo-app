@@ -38,3 +38,5 @@ Route::match(['get', 'post'], 'register', function(){
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('user','App\Http\Controllers\UserController')->middleware('auth');
+
+Route::resource('filemanager','App\Http\Controllers\FilemanagerController')->middleware('auth');
