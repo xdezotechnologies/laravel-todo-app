@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
+use PDF;
+
 class TaskController extends Controller
 {
     public function __construct()
@@ -107,5 +109,15 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect('task');
+    }
+
+    public function generatePDF($id)
+    {
+        $task = new Task;
+        $task = $task->where('id',$id)->first();
+
+        $pdf = PDF::loadView('tasks.show', compact('task'));
+
+        return $pdf->download('task.pdf');
     }
 }

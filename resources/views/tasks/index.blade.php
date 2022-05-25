@@ -29,6 +29,7 @@
                     <td>{{$t->title}}</td>
                     <td>
                         <a name="" id="" class="btn btn-info" href="{{route('task.show',$t->id)}}" role="button">View</a>
+                        <a name="" id="" class="btn btn-info" href="{{route('generate-pdf',$t->id)}}" role="button">Generate PDF</a>
                         <a name="" id="" class="btn btn-primary" href="{{route('task.edit',$t->id)}}" role="button">Edit</a>
                         <form action="{{route('task.destroy',$t->id)}}" method="POST" enctype="multipart/form-data">
                             @method('delete')

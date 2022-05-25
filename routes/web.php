@@ -40,3 +40,7 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::resource('user','App\Http\Controllers\UserController')->middleware('auth');
 
 Route::resource('filemanager','App\Http\Controllers\FilemanagerController')->middleware('auth');
+
+Route::get('/counter', 'App\Http\Livewire\Counter@render');
+
+Route::get('generate-pdf/{id}','App\Http\Controllers\TaskController@generatePDF')->name('generate-pdf');
