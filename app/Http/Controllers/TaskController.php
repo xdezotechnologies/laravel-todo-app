@@ -51,7 +51,7 @@ class TaskController extends Controller
         $task->des = $request->des;
         $task->save();
 
-        notify()->success('Laravel Notify is awesome!');
+        notify()->success('Task is added successfully.');
 
         return redirect('task');
     }
