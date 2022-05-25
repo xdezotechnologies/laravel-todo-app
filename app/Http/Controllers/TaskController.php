@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use PDF;
 
+use notify;
+
 class TaskController extends Controller
 {
     public function __construct()
@@ -48,6 +50,8 @@ class TaskController extends Controller
         $task->title = $request->title;
         $task->des = $request->des;
         $task->save();
+
+        notify()->success('Laravel Notify is awesome!');
 
         return redirect('task');
     }
